@@ -20,8 +20,8 @@ app.use(
 
 
 app.listen(process.env.PORT, (err) => {
-  if (err) return console.log(err);
-  console.log(`Servidor corriendo en el puerto: ${process.env.PORT}`);
+  if (err) return console.error(err);
+  console.info(`Servidor corriendo en el puerto: ${process.env.PORT}`);
 });
 
 

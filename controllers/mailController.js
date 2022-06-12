@@ -13,7 +13,7 @@ const sendEmail = (req, res) => {
     message
   } = req.body;
 
-  if (!name || !email || !subject || !message) res.status(500).send({status: 500, message: 'Algún campo no es correcto'});
+  if (!name || !email || !subject || !message) res.status(500).send({status: 500, message: 'Missing parameters'});
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -34,14 +34,13 @@ const sendEmail = (req, res) => {
     if (error) {
       res.status(500).send({status: 500, message: error});
     } else {
-      res.status(200).send({status: 200, message: 'Email enviado a ' + process.env.CLIENTMAIL});
+      res.status(200).send({status: 200, message: 'Email sent to ' + process.env.CLIENTMAIL});
     }
   });
 };
 
-const checkOk = (req, res) => {
-  return res.status(200).send({status: 200, message: 'Server is working'});
-}
+const checkOk = (req, res) => res.status(200).send({status: 200, message: 'Server is working'});
+
 
 export default {
   sendEmail,
