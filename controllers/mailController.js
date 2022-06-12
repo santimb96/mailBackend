@@ -25,7 +25,7 @@ const sendEmail = (req, res) => {
 
   const mailOptions = {
     from: email,
-    to: 'santiagomartinezbota@gmail.com',
+    to: process.env.CLIENTMAIL,
     subject: `${subject} (from ${name} and ${email})`,
     text: message
   };
